@@ -23,6 +23,23 @@ export default component$(() => {
           />
         )}
         <RouterHead />
+        {/* Google Analytics */}
+        {!isDev && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=G-KV9B11K1KS`}
+            ></script>
+            <script
+              dangerouslySetInnerHTML={`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-KV9B11K1KS');
+            `}
+            />
+          </>
+        )}
       </head>
       <body lang="en">
         <RouterOutlet />
