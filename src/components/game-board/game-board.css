@@ -1,0 +1,119 @@
+.game-board {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.game-board__container {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.game-board__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-board__title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.025em;
+}
+
+.game-board__subtitle {
+  font-size: 1.125rem;
+  color: #4b5563;
+  max-width: 32rem;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+.game-board__error {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border: 2px solid #fca5a5;
+  color: #b91c1c;
+  padding: 1rem 1.5rem;
+  border-radius: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.1);
+}
+
+.game-board__error-button {
+  margin-left: 1rem;
+  text-decoration: underline;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.game-board__error-button:hover {
+  text-decoration: none;
+  background-color: rgba(185, 28, 28, 0.1);
+}
+
+.game-board__idea-container {
+  margin-bottom: 3rem;
+}
+
+.game-board__choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.game-board__reset-container {
+  text-align: center;
+}
+
+.game-board__reset-button {
+  color: #6b7280;
+  font-size: 0.875rem;
+  background: none;
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.game-board__reset-button:hover:not(:disabled) {
+  color: #374151;
+  text-decoration: none;
+  background-color: rgba(107, 114, 128, 0.1);
+  transform: translateY(-1px);
+}
+
+.game-board__instructions {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .game-board__choices {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .game-board__title {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
