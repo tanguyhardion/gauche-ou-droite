@@ -11,7 +11,8 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "Déterminez si une idée est plutôt de gauche ou de droite politiquement. Un jeu interactif pour tester vos connaissances politiques.",
+      content:
+        "Déterminez si une idée est plutôt de gauche ou de droite politiquement. Un jeu interactif pour tester vos connaissances politiques.",
     },
   ],
 };
