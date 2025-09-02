@@ -13,6 +13,7 @@ export const GameBoard = component$(() => {
   const currentIdea = useSignal<Idea | null>(null);
   const isLoading = useSignal(false);
   const error = useSignal<string>("");
+  const stamp = useSignal<"Gauche" | "Droite" | null>(null);
 
   const loadNewIdea = $(async () => {
     isLoading.value = true;
@@ -21,6 +22,7 @@ export const GameBoard = component$(() => {
     try {
       const idea = await fetchRandomIdea();
       currentIdea.value = idea;
+      stamp.value = null; // Reset stamp when new idea is loaded
 
       if (!idea) {
         error.value =
@@ -35,8 +37,14 @@ export const GameBoard = component$(() => {
     }
   });
 
-  const handleChoice = $(async () => {
+  const handleChoice = $(async (choice: "Gauche" | "Droite") => {
     if (!currentIdea.value) return;
+
+    // Set stamp and animate
+    stamp.value = choice;
+
+    // Wait for animation to finish before loading next idea
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     // Mark current idea as seen
     await markIdeaAsSeen(currentIdea.value.id);
@@ -81,7 +89,11 @@ export const GameBoard = component$(() => {
 
           {/* Idea Display */}
           <div class="game-board__idea-container">
-            <IdeaDisplay idea={currentIdea.value} isLoading={isLoading.value} />
+            <IdeaDisplay
+              idea={currentIdea.value}
+              isLoading={isLoading.value}
+              stamp={stamp.value}
+            />
           </div>
 
           {/* Choice Buttons */}
@@ -90,13 +102,13 @@ export const GameBoard = component$(() => {
               <ChoiceButton
                 label="Gauche"
                 variant="left"
-                onClick$={() => handleChoice()}
+                onClick$={() => handleChoice("Gauche")}
                 disabled={isLoading.value}
               />
               <ChoiceButton
                 label="Droite"
                 variant="right"
-                onClick$={() => handleChoice()}
+                onClick$={() => handleChoice("Droite")}
                 disabled={isLoading.value}
               />
             </div>

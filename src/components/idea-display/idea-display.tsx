@@ -5,11 +5,12 @@ import styles from "./idea-display.css?inline";
 interface IdeaDisplayProps {
   idea: Idea | null;
   isLoading?: boolean;
+  stamp?: "Gauche" | "Droite" | null;
 }
 
 export const IdeaDisplay = component$<IdeaDisplayProps>(
-  ({ idea, isLoading = false }) => {
-    if (isLoading) {
+  ({ idea, isLoading = false, stamp = null }) => {
+    if (isLoading && !stamp) {
       return (
         <>
           <style dangerouslySetInnerHTML={styles} />
@@ -45,6 +46,11 @@ export const IdeaDisplay = component$<IdeaDisplayProps>(
       <>
         <style dangerouslySetInnerHTML={styles} />
         <div class="idea-display">
+          {stamp && (
+            <div class={["stamp", `stamp--${stamp.toLowerCase()}`]}>
+              {stamp}
+            </div>
+          )}
           <div class="idea-display__content">
             <p class="idea-display__text">{idea.text}</p>
             {idea.category && (
