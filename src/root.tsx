@@ -16,6 +16,7 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
+        <link rel="icon" href="./favicon.ico" />
         {!isDev && (
           <link
             rel="manifest"
